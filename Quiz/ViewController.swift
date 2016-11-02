@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     
     var currentQuestionIndex: Int = 0
     
-    @IBAction func showNextQuestion(sender: AnyObject) {
+    @IBAction func showNextQuestion(_ sender: AnyObject) {
         currentQuestionIndex = currentQuestionIndex + 1
         if currentQuestionIndex == questions.count {
             currentQuestionIndex = 0
@@ -41,11 +41,11 @@ class ViewController: UIViewController {
         self.nextQuestionLabelCenterXConstraint.constant = 0
         currentQuestionLabelCenterXConstraint.constant += view.frame.width
         
-        UIView.animateWithDuration(0.5,
+        UIView.animate(withDuration: 0.5,
                                    delay: 0,
                                    usingSpringWithDamping: 0.5,
                                    initialSpringVelocity:  3,
-                                   options: [.CurveLinear],
+                                   options: [.curveLinear],
                                    animations: {
                                     self.currentQuestionLabel.alpha = 0
                                     self.nextQuestionLabel.alpha = 1
@@ -64,7 +64,7 @@ class ViewController: UIViewController {
         nextQuestionLabelCenterXConstraint.constant = -(view.frame.width)
     }
     
-    @IBAction func showAnswer(sender: AnyObject) {
+    @IBAction func showAnswer(_ sender: AnyObject) {
         let answer: String = answers[currentQuestionIndex]
         answerLabel.text = answer
     }
@@ -74,7 +74,7 @@ class ViewController: UIViewController {
         currentQuestionLabel.text = questions[currentQuestionIndex]
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         nextQuestionLabel.alpha = 0
     }
